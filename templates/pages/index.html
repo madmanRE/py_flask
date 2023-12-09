@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Узнай, какие навыки нужны для выбранной вакансии!</h1>
+<form action="" method="post">
+    <div class="text-field">
+      <div class="text-field__icon">
+        <input class="text-field__input" type="search" name="find" id="find" placeholder="css" value="Python">
+        <button type="submit" style="margin-left: 80%;" class="action-button">Найти</button>
+      </div>
+    </div>
+</form>
+<div style="max-width: 500px; text-align: center;">
+    <p>
+        Введите в поисковую строку <b>ключевое слово</b>, по которому можно найти вакансии по вашей профессии.
+    </p>
+    <figure class="displayed">
+        <img src="{{ url_for('static', filename='img/example.png') }}" width="500px" style="border-radius: 5px;">
+        <figcaption style="font-size:14px"><em>В этом примере ищем вакансию Python разработчика.</em></figcaption>
+    </figure>
+    <p>
+        Затем нажимаем кнопку <button type="button">Найти</button> и получаем результат.
+        <br>
+        <b style="color: red">Внимание!</b>
+        <br>
+        <span>
+            Программа может работать долдго, если впервые собирает данные по этому ключевому слову...
+        </span>
+    </p>
+</div>
+{% endblock %}

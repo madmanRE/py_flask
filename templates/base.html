@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Какие навыки нужны для вакансии &#128072;{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+<body>
+<header>
+    <div class="MenuWrap">
+      <a href="#" class="ListItem">Home</a>
+      <a href="#" class="ListItem">About Us</a>
+      <a href="#" class="ListItem">Products</a>
+      <a href="#" class="ListItem">Policy</a>
+      <a href="#" class="LastItem">Contact Us</a></div>
+</header>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<footer>
+
+</footer>
+</body>
+
+{% block scripts %}
+{% endblock %}
+
+</html>
