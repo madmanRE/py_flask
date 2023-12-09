@@ -1,6 +1,8 @@
 import json
+import os
 from collections import Counter
 import matplotlib.pyplot as plt
+from . import parser, cleaner
 
 
 def extract_skills(filename):
@@ -16,11 +18,12 @@ def extract_skills(filename):
     return all_skills
 
 
-def main(filename):
+def main(query):
+    filename = parser.parse_hh(query)
     all_skills = Counter(extract_skills(filename))
     most_common_skills = all_skills.most_common(30)
 
-    with open("most_common_skills.txt", "w", encoding="utf-8") as f:
+    with open("hh_parser/most_common_skills.txt", "w", encoding="utf-8") as f:
         for i in most_common_skills:
             f.write(": ".join(list(map(lambda x: str(x), i))) + "\n")
 
@@ -33,7 +36,12 @@ def main(filename):
     plt.title("Самые востребованные навыки в вакансиях")
     plt.gca().invert_yaxis()
     plt.tight_layout()
-    plt.show()
+    plt.savefig("static/results/most_common_skills.jpg", format="jpg")
+    plt.close()
 
+    # Обработка файла и запись в базу данных в какую, в SQLite?
 
-main("vacancies.json")
+    cleaner.del_file("hh_parser/most_common_skills.txt")
+    cleaner.del_file("hh_parser/vacancies.json")
+
+    return True

@@ -2,11 +2,11 @@
 
 {% block content %}
 <h1>Узнай, какие навыки нужны для выбранной вакансии!</h1>
-<form action="" method="post">
+<form action="{{ url_for('answer') }}" method="post">
     <div class="text-field">
       <div class="text-field__icon">
-        <input class="text-field__input" type="search" name="find" id="find" placeholder="css" value="Python">
-        <button type="submit" style="margin-left: 80%;" class="action-button">Найти</button>
+          <input class="text-field__input" type="search" name="find" id="find" placeholder="css" value="Python">
+          <button type="submit" style="margin-left: 80%;" class="action-button">Найти</button>
       </div>
     </div>
 </form>

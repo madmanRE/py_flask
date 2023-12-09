@@ -1,7 +1,9 @@
+
 .MenuWrap {
-  background-color: indigo;
+  background-color: Indigo;
   font-family: 'Oswald', sans-serif;
   font-size: 1rem;
+  font-weight: bold;
   min-height: 2.75rem;
   display: flex;
   align-items: center;

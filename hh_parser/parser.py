@@ -2,7 +2,7 @@ import os
 import json
 import requests
 import time
-from parser_url import parse_url
+from .parser_url import parse_url
 
 
 def take_skills(v, url):
@@ -20,7 +20,7 @@ def getPage(name="Python", page=0):
         page - Индекс страницы, начинается с 0. Значение по умолчанию 0, т.е. первая страница
     """
 
-    params = {"text": f"NAME:{name}", "area": 1, "page": page, "per_page": 100}
+    params = {"text": f"NAME:{name}", "area": 1, "page": page, "per_page": 5}
 
     req = requests.get("https://api.hh.ru/vacancies", params)
     data = req.content.decode()
@@ -50,8 +50,9 @@ def parse_hh(name="Python"):
             if (js_obj["pages"] - page) <= 1:
                 break
 
-    with open("vacancies.json", mode="a", encoding="utf8") as f:
+    filename = "hh_parser/vacancies.json"
+
+    with open(filename, mode="a", encoding="utf8") as f:
         f.write(json.dumps(res_data, ensure_ascii=False) + "\n")
 
-
-parse_hh(input("Введите профессию..."))
+    return filename
