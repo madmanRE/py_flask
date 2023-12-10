@@ -75,15 +75,9 @@ def answer():
                 return "Ошибка при добавлении в базу данных"
 
 
-@app.route("/skills-for-vacancies/")
-def get_skills():
-    skills = Skills.query.all()
-    return render_template("pages/all_skills.html", skills=skills)
-
-
-@app.route("/example/")
-def example():
-    return render_template("pages/example.html")
+@app.route("/tips/")
+def tips():
+    return render_template("pages/tips.html")
 
 
 @app.route("/")

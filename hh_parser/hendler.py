@@ -46,7 +46,7 @@ def main(query):
     plt.tight_layout()
 
     plt.savefig(f"static/results/{query}_skills.jpg", format="jpg")
-    plt.close()
+    # plt.close()
 
     cleaner.del_file("hh_parser/most_common_skills.txt")
     cleaner.del_file("hh_parser/vacancies.json")

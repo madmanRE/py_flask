@@ -1,8 +1,0 @@
-{% extends 'base.html' %}
-
-{% block content %}
-{% for skill in skills %}
-<h3>Навыки на вакансию {{ skill.title }}</h3>
-<img id="image_{{ skill.id }}" src="{{ url_for('static', filename=skill.image) }}" style="margin-left: -30%" width="100%" style="display: block;">
-{% endfor %}
-{% endblock %}

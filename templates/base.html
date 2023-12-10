@@ -12,11 +12,8 @@
 <header>
     <div class="MenuWrap">
       <a href="{{ url_for ('index') }}" class="ListItem">Главная</a>
-      <a href="{{ url_for ('get_skills') }}" class="ListItem">Популярные профессии</a>
-      <a href="{{ url_for ('example') }}" class="ListItem">Как это работает</a>
-      <a href="#" class="ListItem">Советы по поиску работы</a>
-      <a class="LastItem" ><img src="{{ url_for('static', filename='img/moon.png') }}" style="cursor: pointer" onclick="toggleMod()" width="20px" title="Change Mod Dark/Light"></a>
-      <a href="#" class="ListItem" style="margin-left: 10px;">Тенденции рынка</a>
+      <a href="{{ url_for ('tips') }}" class="ListItem">Советы по поиску работы</a>
+      <a class="LastItem" ><img src="{{ url_for('static', filename='img/moon.png') }}" style="cursor: pointer;" onclick="toggleMod()" width="20px" title="Change Mod Dark/Light"></a>
     </div>
 </header>
 <div id="mainDiv">
