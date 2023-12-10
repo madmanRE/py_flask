@@ -2,6 +2,10 @@ import json
 import os
 from collections import Counter
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from matplotlib import cm
+from matplotlib.colors import Normalize
 from . import parser, cleaner
 
 
@@ -29,19 +33,22 @@ def main(query):
 
     skills, counts = zip(*most_common_skills)
 
-    plt.figure(figsize=(10, 6))
-    plt.barh(skills, counts, color="skyblue")
-    plt.xlabel("Количество упоминаний")
-    plt.ylabel("Навыки")
-    plt.title("Самые востребованные навыки в вакансиях")
-    plt.gca().invert_yaxis()
-    plt.tight_layout()
-    plt.savefig("static/results/most_common_skills.jpg", format="jpg")
-    plt.close()
+    norm = Normalize(vmin=min(counts), vmax=max(counts))
+    colors = [cm.viridis_r(norm(i)) for i in counts]
 
-    # Обработка файла и запись в базу данных в какую, в SQLite?
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    bars = ax.barh(skills, counts, color=colors)
+
+    ax.set_xlabel("Количество упоминаний")
+    ax.set_title("Самые востребованные навыки в вакансиях")
+    ax.invert_yaxis()
+    plt.tight_layout()
+
+    plt.savefig(f"static/results/{query}_skills.jpg", format="jpg")
+    plt.close()
 
     cleaner.del_file("hh_parser/most_common_skills.txt")
     cleaner.del_file("hh_parser/vacancies.json")
 
-    return True
+    return (query, most_common_skills, f"results/{query}_skills.jpg")

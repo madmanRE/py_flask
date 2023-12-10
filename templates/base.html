@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Какие навыки нужны для вакансии &#128072;{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
     <link rel="icon" href="{{ url_for('static', filename='img/fv.png') }}"/>
 </head>
 <body>
 <header>
     <div class="MenuWrap">
       <a href="{{ url_for ('index') }}" class="ListItem">Главная</a>
-      <a href="#" class="ListItem">Популярные профессии</a>
+      <a href="{{ url_for ('get_skills') }}" class="ListItem">Популярные профессии</a>
       <a href="{{ url_for ('example') }}" class="ListItem">Как это работает</a>
       <a href="#" class="ListItem">Советы по поиску работы</a>
       <a class="LastItem" ><img src="{{ url_for('static', filename='img/moon.png') }}" style="cursor: pointer" onclick="toggleMod()" width="20px" title="Change Mod Dark/Light"></a>
@@ -30,24 +31,6 @@
 </body>
 
 <script>
-
-let darkMode = false;
-
-function toggleMod() {
-  let main = document.querySelector('body');
-
-  if(!darkMode){
-  main.style.backgroundColor = '#071e26';
-  main.style.color = 'white';
-  darkMode = true;
-  }
-  else{
-  main.style.backgroundColor = '';
-  main.style.color = '';
-  darkMode = false;
-  }
-}
-
 {% block scripts %}
 
 {% endblock %}
